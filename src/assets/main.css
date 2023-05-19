@@ -1,0 +1,240 @@
+@import "./reset.css";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@tailwind base;
+@tailwind utilities;
+
+@layer utilities {
+  .gradient-type-list {
+    @apply w-[100px] h-[30px] bg-grey-accent-color px-5 flex justify-center items-center rounded-[5px] cursor-pointer;
+  }
+}
+
+:root {
+  --main-bg-color: #222122;
+  --mobile-nav-color: #1a1a1a;
+  --grey-accent-color: #3e3e3e;
+  --blue-accent-color: #3961ef;
+  --red-selection-color: rgb(239, 54, 109);
+
+  /* transitions */
+  --selection-transition: 0.3s ease-in-out;
+}
+
+#no-border-bottom {
+  border-bottom: none;
+}
+
+::-webkit-scrollbar {
+  background-color: var(--grey-accent-color);
+}
+
+::-webkit-scrollbar-thumb {
+  width: 100px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--main-bg-color);
+}
+
+body {
+  padding: 2% 5%;
+}
+body,
+#app {
+  background-color: var(--main-bg-color);
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+div {
+  font-family: "Inter", sans-serif;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+}
+input {
+  background-color: var(--grey-accent-color);
+  outline: none;
+  border-radius: 50px;
+  border: none;
+  padding-left: 10px;
+  transition: var(--selection-transition);
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  border: 1px solid transparent;
+}
+
+input:focus {
+  border: 1px solid var(--red-selection-color);
+  color: #fff;
+}
+
+input::placeholder {
+  color: rgb(189, 189, 189);
+}
+
+/* Global Headings */
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+h4 {
+  font-weight: 800;
+}
+
+#logo {
+  width: 200px;
+}
+
+.errorMessage {
+  color: var(--red-selection-color);
+}
+
+/* buttons */
+
+button {
+  background-color: transparent;
+  border: none;
+  color: white;
+}
+
+.btn-blue,
+.btn-grey {
+  width: 122px;
+  background-color: transparent;
+  border: none;
+  color: white;
+  background-color: var(--blue-accent-color);
+  padding: 10px 0px;
+  border: 2px solid var(--blue-accent-color);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: var(--selection-transition);
+}
+
+.btn-grey {
+  background-color: var(--grey-accent-color);
+  border: none;
+}
+
+.btn-blue:hover,
+.btn-grey:hover {
+  color: white;
+  scale: 105%;
+}
+
+.btn-back {
+  color: rgb(106, 106, 106);
+  font-weight: 800;
+  font-size: 0.8rem;
+  margin-bottom: 20px;
+}
+
+.btn-back:hover {
+  color: var(--red-selection-color);
+  transition: var(--selection-transition);
+  cursor: pointer;
+}
+
+.btn-go-pro {
+  background-image: linear-gradient(
+    to right,
+    #e44471,
+    #e03b64,
+    #dc3258,
+    #d7284b,
+    #d21f3e
+  );
+  padding: 15px 20px;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  transition: var(--selection-transition);
+  font-weight: 800;
+}
+
+.btn-go-pro:hover {
+  cursor: pointer;
+  border: 1px solid white;
+}
+
+.edit-gradient-card-btn {
+  width: 270px;
+  height: 40px;
+  background-image: linear-gradient(
+    294deg,
+    #8339e7 0%,
+    #d64dcd 30%,
+    #f9a15b 66%,
+    #ef4343 100%
+  );
+  background-repeat: no-repeat;
+  border: 1px solid transparent;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: var(--selection-transition);
+}
+
+.edit-gradient-card-btn:hover {
+  width: 250px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid #fff;
+  cursor: pointer;
+  scale: 1.02;
+}
+
+/* animations */
+
+.fade-in {
+  opacity: 1;
+  animation: fadein 0.4s ease;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-out {
+  opacity: 1;
+  animation: fadeout 0.4s ease;
+}
+
+@keyframes fadeout {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .router-link-exact-active > svg > path {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background-color: var(--grey-accent-color);
+    border-radius: 50%;
+    stroke: var(--red-selection-color);
+  }
+}

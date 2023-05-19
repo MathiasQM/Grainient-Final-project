@@ -1,0 +1,54 @@
+    const deleteCollections = async (index) => {
+        const {data: usersGradients} = await supabase.from("collections").select().eq('owner_id', user.value.id).select('gradient_id')
+        const {data: usersCollections} = await supabase.from("collections").select().eq('owner_id', user.value.id).select('collection_name')
+        let arrOfAddedGradients = usersGradients;
+        let arrOfCollections = usersCollections;
+        arrOfAddedGradients.forEach(async gradient => {
+            if (gradient.gradient_id === null) {
+                await supabase.from('collections').delete().match({ 'collection_name': arrOfCollections[index].collection_name })
+            } else {
+                return error.value = "You cannot delete a collection that is not"
+            }
+        })
+        getCollections()
+    }
+
+    // const deleteCollection = async (index) => {
+    //     const {data: usersCollections} = await supabase.from("users").select().eq('username', user.value.username).single()
+    //     const {data: allProgradients} = await supabase.from("progradients").select()
+    //     // get gradient Id form progradients
+    //     let arrOfAddedGradients = usersCollections.addedToCollection;
+    //     const collectionToBeDeleted = usersCollections.Collections[index]
+    //     let arrOfUserCollections = usersCollections.Collections
+    //     if (arrOfAddedGradients === null) {
+    //         const indexOfCollectionToDelete = arrOfUserCollections.indexOf(collectionToBeDeleted);
+    //                 if (indexOfCollectionToDelete > -1 && arrOfUserCollections.includes(collectionToBeDeleted)) { // only splice array when item is found
+    //                     arrOfUserCollections.splice(indexOfCollectionToDelete, 1);
+    //                     await supabase.from("users").update([{Collections: arrOfUserCollections}]).eq('username', user.value.username)
+    //                     getCollections()
+    //         }             
+    //     } else {
+    //         allProgradients.forEach( async proGradient => {
+    //             proGradient = proGradient.gradient_id + collectionToBeDeleted
+    //             if (arrOfAddedGradients.includes(proGradient)) {
+    //                 const indexOfGradientToDelete = arrOfAddedGradients.indexOf(proGradient);
+    //                     if (indexOfGradientToDelete > -1 && arrOfAddedGradients.includes(proGradient)) { // only splice array when item is found
+    //                         arrOfAddedGradients.splice(indexOfGradientToDelete, 1);
+    //                         await supabase.from("users").update([{addedToCollection: arrOfAddedGradients}]).eq('username', user.value.username)
+    //                 } 
+    //             }
+    //         });
+    //         const indexOfCollectionToDelete = arrOfUserCollections.indexOf(collectionToBeDeleted);
+    //                 if (indexOfCollectionToDelete > -1 && arrOfUserCollections.includes(collectionToBeDeleted)) { // only splice array when item is found
+    //                     arrOfUserCollections.splice(indexOfCollectionToDelete, 1);
+    //                     await supabase.from("users").update([{Collections: arrOfUserCollections}]).eq('username', user.value.username)
+    //                     getCollections()
+    //         }   
+    //     }
+
+    // }
+
+    const getCollections = async () => {
+        const {data: usersCollections} = await supabase.from("collections").select().eq('owner_id', user.value.id).select("collection_name")
+        collectionsArr.value = usersCollections;
+    }
